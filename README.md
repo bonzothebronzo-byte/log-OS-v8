@@ -11,23 +11,24 @@ As players place words, they aren't just scoring points for the letters; they ar
 3. The Scoring System
 The scoring is split into two distinct parts:
 
-    Base Score: Standard summation of letter values for words formed in the current turn.
+   Base Score: Standard summation of letter values for words formed in the current turn.
 
-        Compilation: The board state is compiled into a sequence of operations based on logic order of operations.
+   Compilation: The board state is compiled into a ruleset sequence based on logic order of operations.
+   
 
-        Action Calculation: The system calculates a hidden value based on the "Action" operators:
+   Action Calculation: The system calculates a hidden value based on the "Action" operators:
 
-            Triggers (IF / OR): The words covering IF and OR tiles act as Triggers.
+   Triggers (IF / OR): The words covering IF and OR tiles act as Triggers.
 
-            THEN <Word>: Sets the base value (Score of Word).
+   THEN <Word>: Sets the base value (Score of Word).
 
-            PLUS/AND <Word>: Adds to the value.
+   PLUS/AND <Word>: Adds to the value.
 
-            MULT <Word>: Multiplies the value.
+   MULT <Word>: Multiplies the value.
 
-            OVER <Word>: Divides the value.
+   OVER <Word>: Divides the value.
 
 
-        Execution: If a player places a new word anywhere on the board that matches a Trigger word, the cascadeOutcome is added to their score.
+Execution: If a player places a new word anywhere on the board that matches a Trigger word, the cascadeOutcome is added to their score.
 
 In summary: Players use the board to "program" a high-value function (e.g., IF "CAT" THEN "DOG" (5pts) MULT "SKY" (10pts) = 50pts). They then "call" that function later by playing the word "CAT" again elsewhere to instantly gain the stored 50 points.
