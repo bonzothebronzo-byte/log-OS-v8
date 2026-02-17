@@ -1,5 +1,10 @@
 Can be played on a phone if you view 'Desktop Site', though not recommended.
+
+
 Use the fullscreen toggle to play on a tablet.
+
+Double tap or double click to change orientation of word entry.
+
 
 1. Core Concept
 log(OS) is a hybrid spatial word game and logic circuit builder. The intent is to hide a programming layer beneath an acrostic word-game. The 11x11 board contains hidden Operators (IF, THEN, AND, OR, PLUS, MINUS, MULT, OVER) fixed at specific coordinates.
