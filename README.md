@@ -1,20 +1,33 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+1. Core Concept
+log(OS) is a hybrid spatial word game and logic circuit builder. The intent is to hide a programming layer beneath an acrostic word-game. The 11x11 board contains hidden Operators (IF, THEN, AND, OR, PLUS, MINUS, MULT, OVER) fixed at specific coordinates.
 
-# Run and deploy your AI Studio app
+As players place words, they aren't just scoring points for the letters; they are "compiling" a logic program based on which words cover which operators.
 
-This contains everything you need to run your app locally.
+2. Mechanics
+    Tile Placement: Standard crossword style (connecting to existing tiles) or Mode Switch to Go style.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1Pkps7nIznZdEVLYVcjOD_JfeKlEegHLD
+    Logic Phrases: The app scans the grid to convert word placements into a structured list of operations (e.g., IF [WORD_A] THEN [WORD_B] PLUS [WORD_C]).
 
-## Run Locally
+3. The Scoring System
+The scoring is split into two distinct parts:
 
-**Prerequisites:**  Node.js
+    Base Score: Standard summation of letter values for words formed in the current turn.
+
+        Compilation: The board state is compiled into a sequence of operations based on logic order of operations.
+
+        Action Calculation: The system calculates a hidden value based on the "Action" operators:
+
+            Triggers (IF / OR): The words covering IF and OR tiles act as Triggers.
+
+            THEN <Word>: Sets the base value (Score of Word).
+
+            PLUS/AND <Word>: Adds to the value.
+
+            MULT <Word>: Multiplies the value.
+
+            OVER <Word>: Divides the value.
 
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+        Execution: If a player places a new word anywhere on the board that matches a Trigger word, the cascadeOutcome is added to their score.
+
+In summary: Players use the board to "program" a high-value function (e.g., IF "CAT" THEN "DOG" (5pts) MULT "SKY" (10pts) = 50pts). They then "call" that function later by playing the word "CAT" again elsewhere to instantly gain the stored 50 points.
