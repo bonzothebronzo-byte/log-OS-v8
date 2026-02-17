@@ -1903,6 +1903,14 @@ const App: React.FC = () => {
         
         {/* Board Container */}
         <div className="relative z-10 max-w-2xl w-full aspect-square bg-slate-900/50 p-2 md:p-4 rounded shadow-2xl border border-slate-800 backdrop-blur-sm mb-4">
+                   <button 
+             onClick={toggleFullScreen}
+             className="absolute -top-10 left-0 h-8 px-3 flex items-center gap-2 bg-slate-900 border border-slate-700 rounded text-[10px] font-bold tracking-widest text-slate-500 hover:text-emerald-400 hover:border-emerald-500/50 transition-all z-50"
+             title="Toggle Full Screen"
+          >
+             {isFullscreen ? <Minimize size={14} /> : <Maximize size={14} />}
+             {isFullscreen ? 'EXIT' : 'FULL'}
+          </button>
           <div 
             className={`grid w-full h-full gap-px bg-slate-800 border border-slate-700 transition-opacity ${isCpuTurn ? 'opacity-90' : 'opacity-100'}`}
             style={{ gridTemplateColumns: `repeat(${BOARD_SIZE}, minmax(0, 1fr))` }}
