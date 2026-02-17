@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>log(OS): Spatial Logic Board</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"JetBrains Mono"', 'monospace'],
+              serif: ['"Playfair Display"', 'serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+              vt323: ['"VT323"', 'monospace'],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=Playfair+Display:wght@400;700&family=VT323&display=swap');
+      
+      /* Uncanny noise texture overlay */
+      .noise-bg {
+        background-color: #0f172a;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+      }
+      
+      /* Cascade Flash Animation */
+      @keyframes cascadeFlash {
+        0% { color: #00FF41; text-shadow: none; }
+        25% { color: #EF4444; text-shadow: 0 0 5px #EF4444; }
+        50% { color: #FFFFFF; text-shadow: 0 0 10px #FFFFFF; }
+        75% { color: #EF4444; text-shadow: 0 0 5px #EF4444; }
+        100% { color: #00FF41; text-shadow: none; }
+      }
+      .cascade-flash {
+        animation: cascadeFlash 0.6s ease-in-out forwards;
+      }
+
+      /* Custom scrollbar for the architectural feel */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1e293b; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #475569; 
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.3.1",
+    "react/": "https://esm.sh/react@18.3.1/",
+    "react-dom": "https://esm.sh/react-dom@18.3.1",
+    "react-dom/": "https://esm.sh/react-dom@18.3.1/",
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0?deps=react@18.3.1",
+    "peerjs": "https://esm.sh/peerjs@1.5.2?bundle-deps"
+  }
+}
+</script>
+</head>
+  <body class="noise-bg text-slate-200 antialiased h-screen overflow-hidden selection:bg-rose-500/30 font-sans">
+    <div id="root"></div>
+    <script type="module" src="/src/index.tsx"></script>
+    
+    <!-- RESOURCE WARMER: Preload fonts and force Tailwind JIT generation -->
+    <div aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none; opacity: 0;">
+      
+      <!-- 1. Font Preloading: Render text in specific weights used in game to force browser download -->
+      <div style="font-family: 'Playfair Display', serif; font-weight: 400;">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+      <div style="font-family: 'Playfair Display', serif; font-weight: 700;">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+      <div style="font-family: 'JetBrains Mono', monospace; font-weight: 400;">0123456789</div>
+      <div style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">log(OS) START</div>
+      <div style="font-family: 'VT323', monospace;">00 FF 41</div>
+
+      <!-- 2. Tailwind Class Warming: Force generation of classes that only appear after interaction -->
+      <div class="bg-[#e5e5d5] text-slate-900"></div> <!-- Locked Tile State -->
+      <div class="bg-[#f0f0e0] text-rose-900 ring-1 ring-rose-500/50"></div> <!-- Pending Tile State -->
+      
+      <!-- 3. Dynamic Class Registration: Classes constructed via string interpolation in BoardCell -->
+      <div class="bg-amber-500 bg-cyan-500 bg-rose-500 bg-violet-500 bg-emerald-500 bg-slate-500"></div>
+      <div class="border-amber-700/30 border-cyan-700/30 border-rose-700/30 border-violet-700/30 border-emerald-700/30"></div>
+      
+      <!-- 4. Hover State Warming -->
+      <div class="group-hover:translate-y-[-2px] group-hover:bg-[#e5e5d5]/10 group-hover:text-transparent group-hover:backdrop-blur-none"></div>
+    </div>
+  </body>
+</html>
