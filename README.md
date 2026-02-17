@@ -16,7 +16,7 @@ The scoring is split into two distinct parts:
    Compilation: The board state is compiled into a ruleset sequence based on logic order of operations.
    
 
-   Action Calculation: The system calculates a hidden value based on the "Action" operators:
+   Action Calculation: The system calculates a hidden value based on the "Action" operators.
 
    Triggers (IF / OR): The words covering IF and OR tiles act as Triggers.
 
